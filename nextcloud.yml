@@ -5,6 +5,8 @@ services:
     image: mariadb:10.6
     command: --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=ROW
     restart: always
+    networks:
+      - nextcloud-internal
     volumes:
       - db:/var/lib/mysql
     environment:
@@ -14,10 +16,14 @@ services:
   redis:
     image: redis:alpine
     restart: always
+    networks:
+      - nextcloud-internal
 
   nextcloud:
     image: nextcloud:apache
     restart: always
+    networks:
+      - nextcloud-internal
     ports:
       - 8080:80
     volumes:
@@ -32,3 +38,7 @@ services:
 volumes:
   db:
   nextcloud:
+
+
+networks:
+  nextcloud-internal:
