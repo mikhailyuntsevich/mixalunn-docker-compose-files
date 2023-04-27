@@ -30,6 +30,7 @@ services:
       - 8080:80
     volumes:
       - nextcloud:/var/www/html
+      - /mnt/volume/nextcloud:/var/www/html/data
     environment:
       - MYSQL_HOST=db
       - REDIS_HOST=redis
