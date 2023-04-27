@@ -12,6 +12,8 @@ services:
     environment:
       - MARIADB_AUTO_UPGRADE=1
       - MARIADB_DISABLE_UPGRADE_BACKUP=1
+    env_file:
+      - stack.env
 
   redis:
     image: redis:alpine
@@ -34,6 +36,8 @@ services:
     depends_on:
       - db
       - redis
+    nextcloud:
+      - stack.env
 
 volumes:
   db:
