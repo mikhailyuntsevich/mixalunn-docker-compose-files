@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  trilium:
+    image: zadam/trilium
+    restart: always
+    volumes:
+      - trilium:/home/node/trilium-data
+
+volumes:
+  trilium:
+
+
+networks:
+  default:
+    external: true
+    name: defservices
