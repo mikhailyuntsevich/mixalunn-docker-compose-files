@@ -4,7 +4,7 @@ services:
     container_name: jellyfin
     restart: unless-stopped
     group_add:
-      - 998
+      - "998"
     volumes:
       - /data/jellyfin/config:/config
       - /data/jellyfin/cache:/cache
