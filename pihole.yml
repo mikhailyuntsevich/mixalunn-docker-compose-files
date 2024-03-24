@@ -1,0 +1,18 @@
+services:
+  pihole:
+    image: pihole/pihole
+    container_name: pihole
+    restart: unless-stopped
+    ports:
+      - 192.168.111.10:53:53/tcp
+      - 192.168.111.10:53:53/udp
+    env_file:
+      - stack.env
+    volumes:
+      - /data/pihole/etc-pihole:/etc/pihole
+      - /data/pihole/etc-dnsmasq.d:/etc/dnsmasq.d
+
+networks:
+  default:
+    external: true
+    name: npm
